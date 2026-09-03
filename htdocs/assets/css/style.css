@@ -1,0 +1,279 @@
+/* ============================================================
+   Entrevilles-Reu — feuille de style
+   Palette ancrée dans La Réunion : lagon, encre volcanique,
+   flamboyant. Typo : Anton (affichage, esprit tableau de score)
+   + Work Sans (texte courant).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --encre:        #16241F;   /* quasi-noir, teinte basalte */
+    --sable:        #F3EEE1;   /* fond clair, sable de plage */
+    --sable-fonce:  #E7DFC9;
+    --lagon:        #0E7C7B;   /* accent principal */
+    --lagon-fonce:  #0A5F5E;
+    --corail:       #E8542A;   /* accent secondaire, CTA */
+    --or:           #E3A73A;   /* highlights, badges "en cours" */
+    --texte:        #16241F;
+    --texte-clair:  #52625B;
+    --bordure:      #D8CFB6;
+    --blanc:        #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Work Sans', system-ui, sans-serif;
+    background: var(--sable);
+    color: var(--texte);
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Anton', 'Work Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin: 0 0 12px;
+    color: var(--encre);
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.5rem; margin-top: 32px; }
+h3 { font-size: 1.15rem; }
+
+p  { max-width: 68ch; }
+
+a { color: var(--lagon-fonce); }
+
+.conteneur {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+}
+
+/* ---------- Navigation ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 24px;
+    background: var(--encre);
+    border-bottom: 4px solid var(--corail);
+}
+
+.navbar-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    color: var(--sable);
+    text-decoration: none;
+}
+
+.navbar-liens {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-liens a {
+    margin-left: 8px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #C9D6D0;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navbar-liens a:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--blanc);
+}
+
+/* ---------- Héro (page d'accueil) ---------- */
+
+.hero {
+    background: var(--encre);
+    color: var(--sable);
+    margin: -24px -20px 32px;
+    padding: 56px 20px;
+    border-bottom: 4px solid var(--lagon);
+}
+
+.hero-contenu {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    color: var(--blanc);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    max-width: 16ch;
+}
+
+.hero p {
+    color: #C9D6D0;
+    font-size: 1.1rem;
+    max-width: 55ch;
+}
+
+/* ---------- Cartes ---------- */
+
+.grille-cartes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.carte {
+    background: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-left: 4px solid var(--lagon);
+    border-radius: 4px;
+    padding: 18px;
+}
+
+.carte h3 { margin-bottom: 6px; }
+.carte p { margin: 4px 0; color: var(--texte-clair); font-size: 0.95rem; }
+
+/* ---------- Tableaux (esprit feuille de match) ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanc);
+    margin-top: 16px;
+    border: 1px solid var(--bordure);
+}
+
+thead tr {
+    background: var(--encre);
+}
+
+th {
+    text-align: left;
+    padding: 12px 14px;
+    color: var(--sable);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--bordure);
+    font-size: 0.95rem;
+}
+
+tbody tr:nth-child(even) { background: var(--sable); }
+tbody tr:hover { background: var(--sable-fonce); }
+
+/* ---------- Badges de statut ---------- */
+
+.badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--blanc);
+}
+
+.badge-a_venir   { background: var(--lagon); }
+.badge-en_cours  { background: var(--or); color: var(--encre); }
+.badge-terminee  { background: var(--texte-clair); }
+
+/* ---------- Formulaires ---------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 420px;
+    margin-top: 16px;
+}
+
+label { font-weight: 600; font-size: 0.9rem; }
+
+input, select, textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--bordure);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--blanc);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--lagon);
+    outline-offset: 1px;
+    border-color: var(--lagon);
+}
+
+button, .bouton {
+    padding: 11px 20px;
+    background: var(--corail);
+    color: var(--blanc);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    transition: background 0.15s ease;
+}
+
+button:hover, .bouton:hover { background: #C7431E; }
+
+.erreur {
+    color: #A32E1A;
+    background: #FBE4DC;
+    border: 1px solid #E8542A;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.lien-secondaire {
+    margin-top: 16px;
+    font-size: 0.92rem;
+    color: var(--texte-clair);
+}
+
+/* ---------- Pied de page ---------- */
+
+.pied-page {
+    text-align: center;
+    padding: 28px;
+    background: var(--encre);
+    color: #8FA39C;
+    font-size: 0.85rem;
+}
+
+/* ---------- Accessibilité / responsive ---------- */
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--lagon);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .navbar { flex-direction: column; align-items: flex-start; }
+    .navbar-liens { margin-left: -8px; }
+    h1 { font-size: 1.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}

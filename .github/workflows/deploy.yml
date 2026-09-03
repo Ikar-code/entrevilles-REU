@@ -1,0 +1,31 @@
+name: Déployer sur InfinityFree
+
+# Se déclenche automatiquement à chaque push sur main
+on:
+  push:
+    branches:
+      - main
+  # Permet aussi de le lancer manuellement depuis l'onglet "Actions" sur GitHub
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code du repo
+        uses: actions/checkout@v4
+
+      # ------------------------------------------------------------------
+      # Tout part dans htdocs/ (index.php à la racine, app/ config/ database/
+      # en sous-dossiers protégés par .htaccess "Require all denied").
+      # Nécessaire car le plan gratuit InfinityFree confine PHP à htdocs/
+      # (open_basedir) : impossible d'aller lire un dossier au-dessus.
+      # ------------------------------------------------------------------
+      - name: Déployer vers htdocs/
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./htdocs/
+          server-dir: ./htdocs/
