@@ -1,183 +1,163 @@
 /* ============================================================
-   Entrevilles-Reu — feuille de style
-   Palette ancrée dans La Réunion : lagon, encre volcanique,
-   flamboyant. Typo : Anton (affichage, esprit tableau de score)
-   + Work Sans (texte courant).
+   Entrevilles-Reu — identité "stade sous les projecteurs"
+   Le contenu clair = la pelouse éclairée, la nav/footer sombres
+   = le ciel nocturne. Lagon (teal), corail, or comme accents.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-    --encre:        #16241F;   /* quasi-noir, teinte basalte */
-    --sable:        #F3EEE1;   /* fond clair, sable de plage */
-    --sable-fonce:  #E7DFC9;
-    --lagon:        #0E7C7B;   /* accent principal */
-    --lagon-fonce:  #0A5F5E;
-    --corail:       #E8542A;   /* accent secondaire, CTA */
-    --or:           #E3A73A;   /* highlights, badges "en cours" */
-    --texte:        #16241F;
-    --texte-clair:  #52625B;
-    --bordure:      #D8CFB6;
-    --blanc:        #FFFFFF;
+    --ink:          #12161F;
+    --ink-soft:     #1B2130;
+    --cream:        #F6F3EC;
+    --texte:        #1C2230;
+    --texte-doux:   #6B7280;
+    --bordure:      #E3DFD4;
+
+    --lagon:        #1F7A6C;
+    --lagon-vif:    #26957F;
+    --corail:       #FF6B4A;
+    --corail-vif:   #FF5533;
+    --or:           #D9A84E;
 }
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
     margin: 0;
-    font-family: 'Work Sans', system-ui, sans-serif;
-    background: var(--sable);
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
     color: var(--texte);
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 h1, h2, h3 {
-    font-family: 'Anton', 'Work Sans', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    font-family: 'Barlow Condensed', 'Inter', sans-serif;
+    font-weight: 700;
     line-height: 1.1;
-    margin: 0 0 12px;
-    color: var(--encre);
+    letter-spacing: 0.01em;
+    margin: 0 0 0.5em;
 }
 
-h1 { font-size: 2.4rem; }
-h2 { font-size: 1.5rem; margin-top: 32px; }
-h3 { font-size: 1.15rem; }
+h1 { font-size: 2.4rem; font-weight: 800; }
+h2 { font-size: 1.6rem; margin-top: 1.6em; }
+h3 { font-size: 1.2rem; }
 
-p  { max-width: 68ch; }
+p { max-width: 68ch; color: var(--texte); }
 
-a { color: var(--lagon-fonce); }
+a { color: var(--lagon); }
+a:hover { color: var(--corail); }
 
 .conteneur {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 24px 20px 64px;
+    padding: 40px 24px;
 }
 
-/* ---------- Navigation ---------- */
+/* --- Navbar : le ciel nocturne --- */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 18px 24px;
-    background: var(--encre);
-    border-bottom: 4px solid var(--corail);
+    padding: 18px 28px;
+    background: var(--ink);
+    border-bottom: 3px solid var(--lagon);
 }
 
 .navbar-logo {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 0.02em;
-    color: var(--sable);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--cream);
     text-decoration: none;
+    letter-spacing: 0.01em;
 }
 
 .navbar-liens {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 4px;
+    flex-wrap: wrap;
 }
 
 .navbar-liens a {
-    margin-left: 8px;
-    padding: 6px 10px;
+    margin-left: 4px;
+    padding: 6px 12px;
     border-radius: 4px;
     text-decoration: none;
-    color: #C9D6D0;
-    font-size: 0.92rem;
+    color: #C7CBD6;
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: color 0.15s, background 0.15s;
 }
 
 .navbar-liens a:hover {
-    background: rgba(255,255,255,0.08);
-    color: var(--blanc);
+    color: var(--cream);
+    background: var(--ink-soft);
 }
 
-/* ---------- Héro (page d'accueil) ---------- */
-
-.hero {
-    background: var(--encre);
-    color: var(--sable);
-    margin: -24px -20px 32px;
-    padding: 56px 20px;
-    border-bottom: 4px solid var(--lagon);
-}
-
-.hero-contenu {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.hero h1 {
-    color: var(--blanc);
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    max-width: 16ch;
-}
-
-.hero p {
-    color: #C9D6D0;
-    font-size: 1.1rem;
-    max-width: 55ch;
-}
-
-/* ---------- Cartes ---------- */
+/* --- Cartes --- */
 
 .grille-cartes {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 16px;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .carte {
-    background: var(--blanc);
+    background: white;
     border: 1px solid var(--bordure);
-    border-left: 4px solid var(--lagon);
+    border-top: 3px solid var(--lagon);
     border-radius: 4px;
-    padding: 18px;
+    padding: 20px;
 }
 
-.carte h3 { margin-bottom: 6px; }
-.carte p { margin: 4px 0; color: var(--texte-clair); font-size: 0.95rem; }
+.carte h3 { margin-top: 12px; }
 
-/* ---------- Tableaux (esprit feuille de match) ---------- */
+.carte .bouton { margin-top: 12px; }
+
+/* --- Tableaux --- */
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--blanc);
-    margin-top: 16px;
+    background: white;
+    margin-top: 20px;
     border: 1px solid var(--bordure);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-thead tr {
-    background: var(--encre);
-}
+thead tr { background: var(--ink); }
 
 th {
     text-align: left;
     padding: 12px 14px;
-    color: var(--sable);
+    color: var(--cream);
+    font-family: 'Barlow Condensed', sans-serif;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
 }
 
 td {
-    padding: 11px 14px;
+    text-align: left;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--bordure);
-    font-size: 0.95rem;
 }
 
-tbody tr:nth-child(even) { background: var(--sable); }
-tbody tr:hover { background: var(--sable-fonce); }
+tbody tr:hover { background: #FBF9F5; }
+tbody tr:last-child td { border-bottom: none; }
 
-/* ---------- Badges de statut ---------- */
+td strong { color: var(--lagon); font-size: 1.05em; }
+
+/* --- Badges de statut --- */
 
 .badge {
     display: inline-block;
@@ -185,14 +165,14 @@ tbody tr:hover { background: var(--sable-fonce); }
     border-radius: 999px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--blanc);
+    color: white;
 }
 
 .badge-a_venir   { background: var(--lagon); }
-.badge-en_cours  { background: var(--or); color: var(--encre); }
-.badge-terminee  { background: var(--texte-clair); }
+.badge-en_cours  { background: var(--corail); }
+.badge-terminee  { background: var(--or); color: var(--ink); }
 
-/* ---------- Formulaires ---------- */
+/* --- Formulaires --- */
 
 form {
     display: flex;
@@ -202,7 +182,11 @@ form {
     margin-top: 16px;
 }
 
-label { font-weight: 600; font-size: 0.9rem; }
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texte);
+}
 
 input, select, textarea {
     padding: 10px 12px;
@@ -210,70 +194,61 @@ input, select, textarea {
     border-radius: 4px;
     font-size: 1rem;
     font-family: inherit;
-    background: var(--blanc);
+    background: white;
+    color: var(--texte);
 }
 
 input:focus, select:focus, textarea:focus {
-    outline: 2px solid var(--lagon);
-    outline-offset: 1px;
+    outline: none;
     border-color: var(--lagon);
+    box-shadow: 0 0 0 3px rgba(31, 122, 108, 0.15);
 }
+
+/* --- Boutons --- */
 
 button, .bouton {
     padding: 11px 20px;
     background: var(--corail);
-    color: var(--blanc);
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.98rem;
-    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
     text-decoration: none;
     display: inline-block;
     width: fit-content;
-    transition: background 0.15s ease;
+    transition: background 0.15s;
 }
 
-button:hover, .bouton:hover { background: #C7431E; }
+button:hover, .bouton:hover { background: var(--corail-vif); }
 
 .erreur {
-    color: #A32E1A;
-    background: #FBE4DC;
-    border: 1px solid #E8542A;
-    padding: 10px 14px;
-    border-radius: 4px;
+    color: #C62828;
     font-size: 0.9rem;
+    background: #FDECEA;
+    border: 1px solid #F3C6C2;
+    border-radius: 4px;
+    padding: 10px 14px;
+    max-width: 420px;
 }
 
-.lien-secondaire {
-    margin-top: 16px;
-    font-size: 0.92rem;
-    color: var(--texte-clair);
-}
-
-/* ---------- Pied de page ---------- */
+/* --- Footer : referme le ciel nocturne --- */
 
 .pied-page {
     text-align: center;
     padding: 28px;
-    background: var(--encre);
-    color: #8FA39C;
+    background: var(--ink);
+    color: #8A90A0;
     font-size: 0.85rem;
 }
 
-/* ---------- Accessibilité / responsive ---------- */
-
-a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--lagon);
-    outline-offset: 2px;
-}
+/* --- Responsive --- */
 
 @media (max-width: 640px) {
-    .navbar { flex-direction: column; align-items: flex-start; }
-    .navbar-liens { margin-left: -8px; }
+    .navbar { flex-direction: column; align-items: flex-start; gap: 10px; }
     h1 { font-size: 1.9rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    .conteneur { padding: 28px 16px; }
 }
