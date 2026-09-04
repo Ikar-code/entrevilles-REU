@@ -17,8 +17,8 @@ class SupabaseClient
     private static function init(): void
     {
         if (self::$url === null) {
-            self::$url = rtrim((string) getenv('SUPABASE_URL'), '/');
-            self::$key = (string) getenv('SUPABASE_KEY');
+            self::$url = rtrim((string) ($GLOBALS['env']['SUPABASE_URL'] ?? ''), '/');
+            self::$key = (string) ($GLOBALS['env']['SUPABASE_KEY'] ?? '');
 
             if (self::$url === '' || self::$key === '') {
                 die('Erreur de connexion à la base de données : variables SUPABASE_URL / SUPABASE_KEY manquantes.');
